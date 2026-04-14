@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,15 +20,18 @@ public class ForgotPasswordPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    @Step("Открыть страницу восстановления пароля")
     public void open() {
         driver.get("https://stellarburgers.education-services.ru/forgot-password");
     }
 
+    @Step("Нажать ссылку Войти")
     public void clickLoginLink() {
         wait.until(ExpectedConditions.elementToBeClickable(loginLink));
         driver.findElement(loginLink).click();
     }
 
+    @Step("Проверить что открылась страница входа")
     public boolean isLoginPage() {
         wait.until(ExpectedConditions.urlContains("login"));
         return driver.getCurrentUrl().contains("login");
